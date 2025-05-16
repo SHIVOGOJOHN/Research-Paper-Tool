@@ -54,11 +54,11 @@ def get_db_connection():
         conn=mysql.connector.connect(
             charset="utf8mb4",
             connection_timeout=10,
-            database= st.secets["general"]["database"],
+            database= st.secrets["general"]["database"],
             host="mysql-f3601b9-jonesjorney-bd4e.f.aivencloud.com",
-            password=st.secets["general"]["password"],
+            password=st.secrets["general"]["password"],
             port=21038,
-            user=st.secets["general"]["user"]
+            user=st.secrets["general"]["user"]
             )
         return conn
     
@@ -510,8 +510,8 @@ def main():
     setup_directories()
     # Admin Credentials
     
-    ADMIN_USERNAME = st.secets["general"]["ADMIN_USERNAME"]
-    ADMIN_PASSWORD = st.secets["general"]["ADMIN_PASSWORD"]
+    ADMIN_USERNAME = st.secrets["general"]["ADMIN_USERNAME"]
+    ADMIN_PASSWORD = st.secrets["general"]["ADMIN_PASSWORD"]
     
     st.sidebar.write("---")
     
