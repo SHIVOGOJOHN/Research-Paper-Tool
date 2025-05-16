@@ -163,7 +163,7 @@ def display_home():
                 st.image(paper['thumb_url'], use_container_width=True)
         
         with col2:
-            st.markdown('<div style="min-height: 10px; padding-top: -10px;">', unsafe_allow_html=True)
+            #st.markdown('<div style="min-height: 0px; padding-top: 0px;">', unsafe_allow_html=True)
             title = paper['title']
             if len(title) > 50:
                 title = title[:50] + "..."
