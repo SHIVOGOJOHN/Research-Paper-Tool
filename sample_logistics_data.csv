@@ -1,0 +1,2 @@
+distance_km,average_speed_kmph,fuel_consumed_liters,elevation_change_m,cargo_weight_tons,traffic_level,vehicle_type_air_cargo,vehicle_type_cargo_ship,vehicle_type_diesel_truck,vehicle_type_electric_truck,vehicle_type_freight_train,fuel_type_aviation_fuel,fuel_type_diesel,fuel_type_electric,emission_intensity,fuel_efficiency
+0.0,0.0,0.0,0.0,0.0,1,0,0,0,0,0,0,0,0,0.0,0.0
