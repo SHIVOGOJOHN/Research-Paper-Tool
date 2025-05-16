@@ -54,11 +54,11 @@ def get_db_connection():
         conn=mysql.connector.connect(
             charset="utf8mb4",
             connection_timeout=10,
-            database="defaultdb",
+            database= st.secets["general"]["database"],
             host="mysql-f3601b9-jonesjorney-bd4e.f.aivencloud.com",
-            password="AVNS_ERXe8j5gIX5yis97hnw",
+            password=st.secets["general"]["password"],
             port=21038,
-            user="avnadmin"
+            user=st.secets["general"]["user"]
             )
         return conn
     
@@ -234,8 +234,8 @@ def display_home():
 def admin_login():
         
     # Admin Credentials
-    ADMIN_USERNAME = "admin"
-    ADMIN_PASSWORD = "jon6y.crae"
+    ADMIN_USERNAME = st.secets["general"]["ADMIN_USERNAME"]
+    ADMIN_PASSWORD = st.secets["general"]["ADMIN_PASSWORD"]
 
     st.title("Admin Login")
     if st.session_state.logged_in:
@@ -508,6 +508,10 @@ def display_read_pdf(slug):
 def main():
     add_background()
     setup_directories()
+    # Admin Credentials
+    
+    ADMIN_USERNAME = st.secets["general"]["ADMIN_USERNAME"]
+    ADMIN_PASSWORD = st.secets["general"]["ADMIN_PASSWORD"]
     
     st.sidebar.write("---")
     
