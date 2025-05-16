@@ -234,8 +234,8 @@ def display_home():
 def admin_login():
         
     # Admin Credentials
-    ADMIN_USERNAME = st.secets["general"]["ADMIN_USERNAME"]
-    ADMIN_PASSWORD = st.secets["general"]["ADMIN_PASSWORD"]
+    ADMIN_USERNAME = st.secrets["general"]["ADMIN_USERNAME"]
+    ADMIN_PASSWORD = st.secrets["general"]["ADMIN_PASSWORD"]
 
     st.title("Admin Login")
     if st.session_state.logged_in:
