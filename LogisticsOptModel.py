@@ -303,13 +303,17 @@ def main():
                     key="pdf_description_button"
                 )
         
-
+        st.markdown("""
+                <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+            """, unsafe_allow_html=True)
         # Category selection
         category = st.radio("Select Analysis Category:", 
                         ["Predict Carbon Emissions", 
                             "Optimize Travel Routes",
                             "Demand Forecasting"])
-        
+        st.markdown("""
+                <div style="border-bottom: 1px solid #ccc; margin: 10px 0;"></div>
+            """, unsafe_allow_html=True)
         # Category-specific input handling
         if category == "Predict Carbon Emissions":
             st.header("Carbon Emissions Prediction")
