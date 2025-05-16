@@ -277,7 +277,7 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            with open(r"C:\Users\A\.vscode\Streamlit\Research Paper Tool\sample_logistics_data.csv", "rb") as file:
+            with open("sample_logistics_data.csv", "rb") as file:
 
                 btn = st.download_button(
                     label="Download CSV Template",
@@ -291,7 +291,7 @@ def main():
                 )
         
         with col2:
-            with open(r"C:\Users\A\.vscode\Streamlit\Research Paper Tool\feature_description.pdf", "rb") as file:
+            with open("feature_description.pdf", "rb") as file:
                 btn = st.download_button(
                     label="Download Feature Description (PDF)",
                     data=file,
