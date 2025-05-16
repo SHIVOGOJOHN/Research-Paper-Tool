@@ -26,7 +26,7 @@ def preprocess_emissions_data(df, training= False):
         df['emission_intensity'] = df['estimated_emissions_kg'] / df['distance_km']
     else:
         # For prediction, set emission_intensity to 0 or another default value
-        df['emission_intensity'] = 0
+        df['emission_intensity'] = 1
     
     # Encoding categorical variables
     traffic_level_map = {'low': 1, 'medium': 2, 'high': 3}
@@ -329,7 +329,7 @@ def main():
                 elevation_change_m = st.number_input("Elevation Change" , key="f--{elevation}")
                 fuel_type = st.selectbox('Fuel Type', ["aviation_fuel", "diesel", "electric"])
                 vehicle_type = st.selectbox('Vehicle Type', ["air_cargo", "ship_cargo", "diesel_truck", "electric_truck", "freight_train" ])
-                emission_intensity = 0
+                emission_intensity = 1
 
                 if fuel_consumed > 0:
                     fuel_efficiency = distance / fuel_consumed
@@ -351,7 +351,7 @@ def main():
                         'vehicle_type': [vehicle_type],
                         'traffic_level': [traffic_level],
                         'fuel_efficiency': [fuel_efficiency],
-                        #'emission_intensity' : [emission_intensity]
+                        'emission_intensity' : [emission_intensity]
                         })
                     
                     
@@ -369,7 +369,7 @@ def main():
                             encoded_data[col] = 0
                     
                     # Add emission_intensity (0 for prediction)
-                    encoded_data['emission_intensity'] = 0
+                    encoded_data['emission_intensity'] = 1
 
                     # Debug output
                     st.write("Debug - Processed features:")
