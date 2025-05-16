@@ -10,7 +10,7 @@ import joblib
 st.set_page_config(page_title="Logistics Optimization", layout="wide")
 
 # Load pre-trained models
-emission_model = joblib.load( '\trained_emission_model.joblib')
+emission_model = joblib.load( 'trained_emission_model.joblib')
 
 scaler = joblib.load('emissions_scaler.joblib')
 
