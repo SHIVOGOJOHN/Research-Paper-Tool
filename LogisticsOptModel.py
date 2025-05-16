@@ -10,11 +10,9 @@ import joblib
 st.set_page_config(page_title="Logistics Optimization", layout="wide")
 
 # Load pre-trained models
-emission_model = joblib.load(
-    r'C:\Users\A\.vscode\Streamlit\Research Paper Tool\trained_emission_model.joblib'
-)
+emission_model = joblib.load( '\trained_emission_model.joblib')
 
-scaler = joblib.load(r'C:\Users\A\.vscode\Streamlit\Research Paper Tool\emissions_scaler.joblib')
+scaler = joblib.load('emissions_scaler.joblib')
 
 # Preprocessing functions
 def preprocess_emissions_data(df, training= False):
