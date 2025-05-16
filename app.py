@@ -196,7 +196,7 @@ def display_home():
  
         with col5:
             st.markdown('<div style="padding-top: 30px;">', unsafe_allow_html=True)
-            if st.button("Related Files", key = f"rel_{idx}"):
+            if st.button("Download Related Files", key = f"rel_{idx}"):
                 create_zip(paper)
             st.markdown('</div>', unsafe_allow_html=True)
 
