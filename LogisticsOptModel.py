@@ -291,7 +291,7 @@ def main():
                 )
         
         with col2:
-            with open("feature_description.pdf", "rb") as file:
+            with open("dataset_description.pdf", "rb") as file:
                 btn = st.download_button(
                     label="Download Feature Description (PDF)",
                     data=file,
