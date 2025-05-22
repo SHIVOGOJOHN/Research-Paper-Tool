@@ -1,1 +1,56 @@
-
+[
+  {
+    "title": "Coming Soon......",
+    "slug": "coming-soon-",
+    "filename": "Causal Inference To Minimize Supply Chain Delays a.pdf",
+    "thumb_url": "static/images/Document1 - WPS Office 22_05_2025 17_36_57.png",
+    "upload_date": "2025-05-22",
+    "dir": "Causal Inference To Minimize Supply Chain Delays a",
+    "related_files": [
+      "Causal Inference To Minimize Supply Chain Delays a.pdf"
+    ],
+    "web_link": ""
+  },
+  {
+    "title": "Designing and Deploying AI Models for Sustainable Logistics Optimization: A Case Study on Eco-Efficient Supply Chains in the USA",
+    "slug": "designing-and-deploying-ai-models-for-sustainable-logistics-optimization-a-case-study-on-eco-efficient-supply-chains-in-the-usa",
+    "filename": "Designing and Deploying AI Models for Sustainable Logistics.pdf",
+    "thumb_url": "static/images/Designing and Deploying AI Models for Sustainable Logistics.pdf - WPS Office 16_05_2025 07_14_24.png",
+    "upload_date": "2025-05-22",
+    "dir": "Designing and Deploying AI Models for Sustainable Logistics",
+    "related_files": [
+      "Designing and Deploying AI Models for Sustainable Logistics.pdf",
+      "Logistics_Optimization.html",
+      "Logistics_Optimization.ipynb"
+    ],
+    "web_link": "https://logistics-opt.streamlit.app/"
+  },
+  {
+    "title": "Building Robust AI and Machine Learning Models For Supplier Risk Management: A Data-Driven Strategy For Enhancing Supply Chain Resilience In The USA",
+    "slug": "building-robust-ai-and-machine-learning-models-for-supplier-risk-management-a-data-driven-strategy-for-enhancing-supply-chain-resilience-in-the-usa",
+    "filename": "Building_Robust_AI_and_Machine_Learning_Models_For_Supply_Risk[1].pdf",
+    "thumb_url": "static/images/Update_Supply_01_Demand_Forecasting_In_US_Supply_Chain_Operations_082100[1].pdf - WPS Office 22_05_2025 17_23_08.png",
+    "upload_date": "2025-05-22",
+    "dir": "Building_Robust_AI_and_Machine_Learning_Models_For_Supply_Risk[1]",
+    "related_files": [
+      "Building_Robust_AI_and_Machine_Learning_Models_For_Supply_Risk[1].pdf",
+      "Supply_risk.html",
+      "Supply_Risk.ipynb"
+    ],
+    "web_link": ""
+  },
+  {
+    "title": "Developing and Implementing AI-Driven Models for Demand Forecasting in US Supply Chains: A Comprehensive Approach to Enhancing Predictive Accuracy",
+    "slug": "developing-and-implementing-ai-driven-models-for-demand-forecasting-in-us-supply-chains-a-comprehensive-approach-to-enhancing-predictive-accuracy",
+    "filename": "Update_Supply_01_Demand_Forecasting_In_US_Supply_Chain_Operations_082100[1].pdf",
+    "thumb_url": "static/images/Update_Supply_01_Demand_Forecasting_In_US_Supply_Chain_Operations_082100[1].pdf - WPS Office 22_05_2025 17_23_08.png",
+    "upload_date": "2025-05-22",
+    "dir": "Update_Supply_01_Demand_Forecasting_In_US_Supply_Chain_Operations_082100[1]",
+    "related_files": [
+      "Demand_Forecasting_In_US_Supply_Chains.html",
+      "Demand_Forecasting_In_US_Supply_Chains.ipynb",
+      "Update_Supply_01_Demand_Forecasting_In_US_Supply_Chain_Operations_082100[1].pdf"
+    ],
+    "web_link": ""
+  }
+]
