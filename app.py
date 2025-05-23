@@ -136,12 +136,12 @@ def display_home():
         
         st.write("######")
         # Icons and links
-        #st.markdown("""
-        #<a href="https://github.com/SHIVOGOJOHN"><img src="https://img.shields.io/badge/GitHub-000?style=flat&logo=github" alt="GitHub"></a>
-        #<a href="https://www.linkedin.com/in/shivogo-john-256473329/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin" alt="LinkedIn"></a>
-        #<a href="mailto:shivogojohn@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail" alt="Email"></a>
-        #<a href="tel:+254704234829"><img src="https://img.shields.io/badge/Phone-25D366?style=flat&logo=whatsapp" alt="Phone"></a>
-        #""", unsafe_allow_html=True)
+        st.markdown("""
+        <a href=""><img src="https://img.shields.io/badge/GitHub-000?style=flat&logo=github" alt="GitHub"></a>
+        <a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin" alt="LinkedIn"></a>
+        <a href="mailto:"><img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail" alt="Email"></a>
+        <a href=""><img src="https://img.shields.io/badge/Phone-25D366?style=flat&logo=whatsapp" alt="Phone"></a>
+        """, unsafe_allow_html=True)
 
     # Add a subtle line separator
     st.markdown("""
