@@ -130,10 +130,10 @@ def display_home():
         #st.title("Shivogo K. John")
         st.title("Machine Learning Eng. and Research")
         st.header("Supply Chains")
-        #st.markdown("""
-           # <div style="text-align: justify;">
-        #In the modern world of evolving technology, businesses are increasingly relying on advanced solutions to navigate complex challenges. I am a passionate Machine Learning Engineer and Researcher dedicated to developing innovative strategies that address these challenges. My expertise lies in leveraging Deep Learning, Machine Learning, and AI techniques to extract valuable insights from large datasets. I focus on building and maintaining robust systems that empower individuals, businesses, and organizations to achieve their goals effectively.</div>
-        #""", unsafe_allow_html=True)
+        st.markdown("""
+            <div style="text-align: justify;">
+        Welcome to a comprehensive collection of innovative research and practical frameworks for modern supply chain management. This platform features detailed analyses and AI-driven solutions to boost resilience, enhance forecasting accuracy, and increase operational efficiency within global supply networks. Explore a variety of actionable studies covering topics such as AI and machine learning applications in supplier risk management, including anomaly detection and fraud prevention, alongside predictive demand forecasting through advanced regression models and deep neural networks. Additionally, discover data-centric strategies to address disruptions stemming from geopolitical shifts, climate change, and market fluctuations. Whether you are a logistics practitioner, a researcher focused on predictive analytics, or an enthusiast interested in AI's impact on supply chains, you'll find valuable resources including rigorous methodologies, real-world case studies, and adaptable frameworks. Engage with datasets, model evaluations, and sector-specific insights to develop smarter, more resilient supply chains equipped to navigate the challenges of tomorrow. Embrace the future of supply chain innovation, where data seamlessly informs decision-making.</div>
+        """, unsafe_allow_html=True)
         
         st.write("######")
         # Icons and links
