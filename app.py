@@ -127,21 +127,22 @@ def display_home():
             </div>
         """, unsafe_allow_html=True)
     with text_column:
-        st.title("Shivogo K. John")
-        st.header("Machine Learning Eng. and Research")
-        st.markdown("""
-            <div style="text-align: justify;">
-        In the modern world of evolving technology, businesses are increasingly relying on advanced solutions to navigate complex challenges. I am a passionate Machine Learning Engineer and Researcher dedicated to developing innovative strategies that address these challenges. My expertise lies in leveraging Deep Learning, Machine Learning, and AI techniques to extract valuable insights from large datasets. I focus on building and maintaining robust systems that empower individuals, businesses, and organizations to achieve their goals effectively.</div>
-        """, unsafe_allow_html=True)
+        #st.title("Shivogo K. John")
+        st.title("Machine Learning Eng. and Research")
+        st.header("Supply Chains")
+        #st.markdown("""
+           # <div style="text-align: justify;">
+        #In the modern world of evolving technology, businesses are increasingly relying on advanced solutions to navigate complex challenges. I am a passionate Machine Learning Engineer and Researcher dedicated to developing innovative strategies that address these challenges. My expertise lies in leveraging Deep Learning, Machine Learning, and AI techniques to extract valuable insights from large datasets. I focus on building and maintaining robust systems that empower individuals, businesses, and organizations to achieve their goals effectively.</div>
+        #""", unsafe_allow_html=True)
         
         st.write("######")
         # Icons and links
-        st.markdown("""
-        <a href="https://github.com/SHIVOGOJOHN"><img src="https://img.shields.io/badge/GitHub-000?style=flat&logo=github" alt="GitHub"></a>
-        <a href="https://www.linkedin.com/in/shivogo-john-256473329/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin" alt="LinkedIn"></a>
-        <a href="mailto:shivogojohn@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail" alt="Email"></a>
-        <a href="tel:+254704234829"><img src="https://img.shields.io/badge/Phone-25D366?style=flat&logo=whatsapp" alt="Phone"></a>
-        """, unsafe_allow_html=True)
+        #st.markdown("""
+        #<a href="https://github.com/SHIVOGOJOHN"><img src="https://img.shields.io/badge/GitHub-000?style=flat&logo=github" alt="GitHub"></a>
+        #<a href="https://www.linkedin.com/in/shivogo-john-256473329/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin" alt="LinkedIn"></a>
+        #<a href="mailto:shivogojohn@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail" alt="Email"></a>
+        #<a href="tel:+254704234829"><img src="https://img.shields.io/badge/Phone-25D366?style=flat&logo=whatsapp" alt="Phone"></a>
+        #""", unsafe_allow_html=True)
 
     # Add a subtle line separator
     st.markdown("""
