@@ -437,7 +437,7 @@ def add_background():
     st.markdown(f"""
         <style>
             .stApp {{
-                background-image: url("https://raw.githubusercontent.com/SHIVOGOJOHN/Research-Paper-Tool/main/static/images/background3.jpeg");
+                background-image: url("https://raw.githubusercontent.com/SHIVOGOJOHN/Research-Paper-Tool/main/static/images/background4.jpg");
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
