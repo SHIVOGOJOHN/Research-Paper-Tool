@@ -158,7 +158,7 @@ def display_ai_chat(slug):
         st.error("Paper not found")
         return
     
-    st.title(f"Research Assistant: {paper['title']}")
+    st.subheader(f"Research Assistant: {paper['title']}")
     
     # Initialize session
     session_key = f"ai_chat_{slug}"
