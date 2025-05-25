@@ -11,8 +11,10 @@ import mysql.connector
 from mysql.connector import Error
 import base64
 
+GROQ_API_KEY = st.secrets["general"]["GROQ_API_KEY"]
 st.set_page_config(page_title = 'ML/AI Research', page_icon = '📊', layout = 'wide')
-
+llm = ChatGroq(groq_api_key=GROQ_API_KEY, model_name="qwen-qwq-32b")
+MAX_TOKENS = 5000
 
 # --- Constants and Config ---
 PAPERS_PER_PAGE = 10
@@ -87,6 +89,127 @@ def create_zip(paper):
             data = zip_buffer,
             file_name = f"{paper['title']}_related_files.zip", mime = "application/zip"
         )            
+
+def count_tokens(text: str) -> int:
+    encoder = tiktoken.get_encoding("cl100k_base")
+    return len(encoder.encode(text))
+
+
+def format_response(content: str) -> (str, str):
+    if '<think>' in content and '</think>' in content:
+        think = content.split('<think>')[1].split('</think>')[0].strip()
+        resp = content.split('</think>',1)[1].strip()
+    else:
+        think, resp = None, content.strip()
+    return think, resp
+
+
+def get_contextual_response(user_input: str, paper_context: str) -> str:
+    
+    # Initialize messages if not exists
+    session_key = f"ai_chat_{paper_context['slug']}"
+
+    if session_key not in st.session_state:
+        st.session_state[session_key] = [{
+            "role": "system", 
+            "content": f"""You are a research assistant. Use this context:
+            Title: {paper_context['title']}
+            Abstract: {paper_context.get('abstract','')}
+            Objectives: {paper_context.get('objectives','')}
+            Conclusion: {paper_context.get('conclusion','')}
+            Summary: {paper_context.get('summary','')}
+            Answer questions about this research."""
+        }]
+
+    # Add user message
+    st.session_state[session_key].append({"role": "user", "content": user_input})
+
+    # Truncate history
+    token_count = count_tokens(st.session_state[session_key][0]['content'])
+    truncated = [st.session_state[session_key][0]]
+    
+    for msg in reversed(st.session_state[session_key][1:]):
+        t = count_tokens(msg['content'])
+        if token_count + t > MAX_TOKENS: break
+        truncated.insert(1, msg)
+        token_count += t
+    
+    # Get response
+    result = llm.invoke(truncated)
+    think, resp = format_response(result.content)
+    
+    # Store response
+    st.session_state[session_key].append({"role": "assistant", "content": resp})
+    return think, resp
+
+
+def clear_chat(slug):
+    if f"messages_{slug}" in st.session_state:
+        del st.session_state[f"messages_{slug}"]
+
+
+def display_ai_chat(slug):
+    papers = load_papers()
+    paper = next((p for p in papers if p['slug'] == slug), None)
+    
+    if not paper:
+        st.error("Paper not found")
+        return
+    
+    st.title(f"Research Assistant: {paper['title']}")
+    
+    # Initialize session
+    session_key = f"ai_chat_{slug}"
+    if session_key not in st.session_state:
+        st.session_state[session_key] = [{
+            "role": "system", 
+            "content": f"""You are a research assistant. Use this context:
+            Title: {paper['title']}
+            Abstract: {paper.get('abstract','')}
+            Objectives: {paper.get('objectives','')}
+            Conclusions: {paper.get('conclusions','')}
+            EDA: {paper.get('eda','')}
+            Answer questions about this research."""
+        }]
+
+    
+    # Display chat history
+    chat_container = st.container()
+    with chat_container:
+        for msg in st.session_state[session_key][1:]:  # Skip system message
+            if msg['role'] == 'user':
+                st.markdown(f"<div class='user-message' style='color: #000000;'>👤 {msg['content']}</div><div style='margin-bottom: 5px;'></div>", unsafe_allow_html=True)
+            else:
+                st.markdown(f"<div class='ai-message' style='color: #000000;'>🤖 {msg['content']}</div><div style='margin-bottom: 5px;'></div>", unsafe_allow_html=True)
+    
+    # Input
+    # Input
+    user_input = st.chat_input("Ask about this research...")
+    if user_input:
+        with st.spinner('Analyzing...'):
+            think, resp = get_contextual_response(user_input, paper)
+            # Update display
+            st.rerun()
+    
+    # Clear chat button
+     # Clear conversation button
+    if st.button("Clear Chat"):
+        del st.session_state[session_key]
+        st.rerun()
+    
+    if st.button("← Return to Paper"):
+        del st.query_params["chat"]
+        st.rerun()
+    
+     # Add styling
+    st.markdown("""
+    <style>
+    .user-message {background:#e3f2fd; padding:8px; border-radius:8px; max-width:80%; margin-left:20%;}
+    .ai-message   {background:#f5f5f5; padding:8px; border-radius:8px; max-width:80%; margin-right:20%;}
+    </style>
+    """, unsafe_allow_html=True)
+
+
 
 # Homepage
 def display_home():
@@ -183,20 +306,11 @@ def display_home():
                 st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
-            if paper.get('model_link'):
-                st.markdown(f"""
-                    <a href="{paper['model_link']}" target="_blank">
-                        <button style="
-                            background-color:#de7006;
-                            color:black;
-                            border:none;
-                            padding:6px 12px;
-                            border-radius:4px;
-                            margin-top:6px;
-                            cursor:pointer;
-                        ">View Model</button>
-                    </a>
-                """, unsafe_allow_html=True)
+            st.markdown('<div style="padding-top: 15px;">', unsafe_allow_html=True)
+            if st.button("🤖Ask AI ", key=f"ask_ai_{idx}"):
+                st.query_params["chat"] = paper["slug"]
+                st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
         
         with col4:
             st.markdown('<div style="padding-top: 30px;">', unsafe_allow_html=True)
@@ -208,6 +322,23 @@ def display_home():
                     key = f"dl_{idx}"
                 )
             st.markdown('</div>', unsafe_allow_html=True)
+
+            if paper.get('model_link'):
+                st.markdown(f"""
+                    <a href="{paper['model_link']}" target="_blank">
+                        <button style="
+                            background-color:#de7006;
+                            color:black;
+                            border:none;
+                            padding:6px 12px;
+                            border-radius:4px;
+                            margin-top:15px;
+                            cursor:pointer;
+                        ">View Model</button>
+                    </a>
+                """, unsafe_allow_html=True)
+
+            
  
         with col5:
             st.markdown('<div style="padding-top: 30px;">', unsafe_allow_html=True)
@@ -285,7 +416,11 @@ def admin_panel():
         pdf_file = st.file_uploader("PDF File", type = ["pdf"])
         thumb_file = st.file_uploader("Thumbnail", type = ["png", "jpg", "jpeg"])
         related_files = st.file_uploader("Related Files", accept_multiple_files = True)
-
+        abstract = st.text_area("Abstract")
+        conclusion = st.text_area("Conclusion")
+        objectives = st.text_area("Research Objectives")
+        summary = st.text_area("Summary")
+        
         if st.form_submit_button("Upload Paper"):
             if all([title,date, pdf_file, thumb_file]):
                 #save main files
@@ -325,7 +460,11 @@ def admin_panel():
                     "dir": paper_dir,
                     "related_files": related_filenames,
                     "web_link": web_link if web_link else "" , # Added web_link to paper metadata
-                    "model_link": model_link if model_link else ""
+                    "model_link": model_link if model_link else "", 
+                    "abstract": abstract,
+                    "conclusion": conclusion,
+                    "objectives": objectives,
+                    "summary": summary,
                 }
                 papers = load_papers()
                 papers.insert(0, new_paper)
@@ -542,7 +681,12 @@ def main():
     #Initialize session state
     if 'logged_in' not in st.session_state:
         st.session_state.logged_in = False
-    
+
+    # Handle AI chat routing
+    if "chat" in query_params:
+        display_ai_chat(query_params["chat"])
+        return
+        
     options = ['Home', 'Admin Login','Contact']
     #Navigation
     page = st.sidebar.selectbox("**Menu**", options)
