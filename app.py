@@ -187,7 +187,7 @@ def display_home():
                 st.markdown(f"""
                     <a href="{paper['model_link']}" target="_blank">
                         <button style="
-                            background-color:#ffcc00;
+                            background-color:#de7006;
                             color:black;
                             border:none;
                             padding:6px 12px;
