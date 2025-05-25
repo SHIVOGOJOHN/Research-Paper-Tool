@@ -9,7 +9,8 @@
     "related_files": [
       "Causal Inference To Minimize Supply Chain Delays a.pdf"
     ],
-    "web_link": ""
+    "web_link": "",
+    "model_link": ""
   },
   {
     "title": "Designing and Deploying AI Models for Sustainable Logistics Optimization: A Case Study on Eco-Efficient Supply Chains in the USA",
@@ -23,7 +24,8 @@
       "Logistics_Optimization.html",
       "Logistics_Optimization.ipynb"
     ],
-    "web_link": "https://logistics-opt.streamlit.app/"
+    "web_link": "https://logistics-opt.streamlit.app/",
+    "model_link": "https://colab.research.google.com/drive/1_MV1214VfuomAmPAYwctS4sWm_M10a1L?usp=sharing"
   },
   {
     "title": "Building Robust AI and Machine Learning Models For Supplier Risk Management: A Data-Driven Strategy For Enhancing Supply Chain Resilience In The USA",
@@ -37,7 +39,9 @@
       "Supply_risk.html",
       "Supply_Risk.ipynb"
     ],
-    "web_link": ""
+    "web_link": "",
+    "model_link": "https://colab.research.google.com/drive/1vIu1i5O8hbbH3kPuNUikY5jbhOLNWKYl?usp=sharing"
+    
   },
   {
     "title": "Developing and Implementing AI-Driven Models for Demand Forecasting in US Supply Chains: A Comprehensive Approach to Enhancing Predictive Accuracy",
@@ -51,6 +55,8 @@
       "Demand_Forecasting_In_US_Supply_Chains.ipynb",
       "Coming Soon.pdf"
     ],
-    "web_link": ""
+    "web_link": "",
+    "model_link": "https://colab.research.google.com/drive/1LqHhvZtaO5By9gdbF7-Dv8SJEKT2znZe?usp=sharing"
+    
   }
 ]
