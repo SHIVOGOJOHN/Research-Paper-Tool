@@ -290,8 +290,8 @@ def display_home():
         with col2:
             #st.markdown('<div style="min-height: 0px; padding-top: 0px;">', unsafe_allow_html=True)
             title = paper['title']
-            if len(title) > 50:
-                title = title[:50] + "..."
+            if len(title) > 39:
+                title = title[:39] + "..."
                 st.markdown(f"""
                     <div title="{paper['title']}">
                         <h3 style="margin: 0;">{title}</h3>
