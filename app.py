@@ -182,6 +182,21 @@ def display_home():
                 st.query_params["read"] = paper["slug"]
                 st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
+
+            if paper.get('model_link'):
+                st.markdown(f"""
+                    <a href="{paper['model_link']}" target="_blank">
+                        <button style="
+                            background-color:#ffcc00;
+                            color:black;
+                            border:none;
+                            padding:6px 12px;
+                            border-radius:4px;
+                            margin-top:6px;
+                            cursor:pointer;
+                        ">View Model</button>
+                    </a>
+                """, unsafe_allow_html=True)
         
         with col4:
             st.markdown('<div style="padding-top: 30px;">', unsafe_allow_html=True)
@@ -266,6 +281,7 @@ def admin_panel():
         title = st.text_input("Paper Title")
         date = st.date_input("Upload Date")
         web_link = st.text_input("Web Link (Optional)") # Added web_link field
+        model_link = st.text_input("Model Link (URL)")
         pdf_file = st.file_uploader("PDF File", type = ["pdf"])
         thumb_file = st.file_uploader("Thumbnail", type = ["png", "jpg", "jpeg"])
         related_files = st.file_uploader("Related Files", accept_multiple_files = True)
@@ -308,7 +324,8 @@ def admin_panel():
                     "upload_date" : str(date),
                     "dir": paper_dir,
                     "related_files": related_filenames,
-                    "web_link": web_link if web_link else "" # Added web_link to paper metadata
+                    "web_link": web_link if web_link else "" , # Added web_link to paper metadata
+                    "model_link": model_link if model_link else ""
                 }
                 papers = load_papers()
                 papers.insert(0, new_paper)
