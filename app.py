@@ -308,7 +308,7 @@ def display_home():
                 st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
-            st.markdown('<div style="padding-top: 15px;">', unsafe_allow_html=True)
+            st.markdown('<div style="padding-top: 30px;">', unsafe_allow_html=True)
             if st.button("🤖Ask AI ", key=f"ask_ai_{idx}"):
                 st.query_params["chat"] = paper["slug"]
                 st.rerun()
@@ -334,7 +334,7 @@ def display_home():
                             border:none;
                             padding:6px 12px;
                             border-radius:4px;
-                            margin-top:15px;
+                            margin-top:30px;
                             cursor:pointer;
                         ">View Model</button>
                     </a>
