@@ -530,7 +530,7 @@ def display_contact():
 def scroll_to_top():
     st.markdown("""
         <div style="position: fixed; bottom: 10px; right: 10px;">
-            <a href="#shivogo-k-john">
+            <a href="##supply-chains">
                 <button style="
                     background: #000000;
                     color: white;
