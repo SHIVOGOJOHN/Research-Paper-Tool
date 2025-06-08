@@ -1,0 +1,58 @@
+# -------------------
+# Streamlit Secrets
+# -------------------
+.streamlit/secrets.toml
+
+# -------------------
+# Python
+# -------------------
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# -------------------
+# Jupyter Notebooks
+# -------------------
+.ipynb_checkpoints
+
+# -------------------
+# Virtual Environments
+# -------------------
+.venv/
+env/
+venv/
+
+# -------------------
+# OS Files
+# -------------------
+.DS_Store
+Thumbs.db
+
+# -------------------
+# Data Files
+# -------------------
+*.csv
+*.tsv
+*.json
+*.xlsx
+
+# -------------------
+# VS Code
+# -------------------
+.vscode/
+
+# -------------------
+# Env Files
+# -------------------
+.env
+.env.*
+
+# -------------------
+# Backup Files
+# -------------------
+*.bak
+*.tmp
