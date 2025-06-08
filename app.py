@@ -13,7 +13,7 @@ import base64
 import tiktoken
 from langchain_groq import ChatGroq
 
-GROQ_API_KEY = os.getnv("GROQ_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 st.set_page_config(page_title = 'ML/AI Research', page_icon = '📊', layout = 'wide')
 llm = ChatGroq(groq_api_key=GROQ_API_KEY, model_name="qwen-qwq-32b")
 MAX_TOKENS = 5000
