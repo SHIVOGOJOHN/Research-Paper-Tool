@@ -382,7 +382,7 @@ def display_home():
 def admin_login():
         
     # Admin Credentials
-    ADMIN_USERNAME = os.getenv("ADMIN_USERNAME"
+    ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
     ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
     st.title("Admin Login")
