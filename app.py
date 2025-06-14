@@ -348,7 +348,7 @@ def display_home():
                     <a href="static/files/{paper['filename']}" download="{paper['filename']}" style="text-decoration: none;">
                         <button style="display: flex; align-items: center; padding: 8px 12px; border: 5px; background-color: #ff9700; color: black; border-radius: 5px; font-weight: bold;">
                             <img src="data:image/png;base64,{download_icon}" width="20" height="20" style="margin-right: 8px;" />
-                            Download PDF
+                            Download
                         </button>
                     </a>
                 </div>
@@ -379,14 +379,14 @@ def display_home():
                 st.markdown(f"""
                     <a href="{paper['web_link']}" target="_blank">
                         <button style="
-                            background-color: #de7006;
+                            background-color: #ff9700;
                             border: none;
                             color: black;
-                            padding: 10px 20px;
+                            padding: 8px 12px;
                             cursor: pointer;
-                            border-radius: 4px;
+                            border-radius: 5px;
                         ">
-                            <i class="fas fa-globe" style="color: black;"> Application</i>
+                            <i class="fas fa-globe" style="color: black;"> Application </i>
                         </button>
                     </a>
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -576,13 +576,6 @@ st.markdown(
         background-color:#ff9700;  /* Button background color */
         color: #000000;  /* Button text color */
         cursor: pointer;
-         display: flex;
-        align-items: center;
-        padding: 8px 12px;
-        border: 5px;
-        border-radius: 5px; 
-        font-weight: bold; 
-        margin-top: 30px;
     }
     div.stButton > button:hover {
         background-color: #ff9700;  /* No change on hover */
@@ -606,13 +599,6 @@ st.markdown(
         background-color:#ff9700;  /* Button background color */
         color: #000000;  /* Button text color */
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        padding: 8px 12px;
-        border: 5px;
-        border-radius: 5px; 
-        font-weight: bold; 
-        margin-top: 30px;
     }
     div.stDownloadButton > button:hover {
         background-color: #ff9700;  /* No change on hover */
