@@ -13,6 +13,13 @@ import base64
 import tiktoken
 from langchain_groq import ChatGroq
 
+
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+
+
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 st.set_page_config(page_title = 'ML/AI Research', page_icon = '📊', layout = 'wide')
 llm = ChatGroq(groq_api_key=GROQ_API_KEY, model_name="qwen-qwq-32b")
@@ -87,10 +94,12 @@ def create_zip(paper):
 
         zip_buffer.seek(0)
         st.download_button(
-            label = "Download Related Files",
-            data = zip_buffer,
-            file_name = f"{paper['title']}_related_files.zip", mime = "application/zip"
-        )            
+                label = "Download Related Files",
+                data = zip_buffer,
+                file_name = f"{paper['title']}_related_files.zip", mime = "application/zip"
+            )
+        st.toast("Your download should start shortly!")
+            
 
 def count_tokens(text: str) -> int:
     encoder = tiktoken.get_encoding("cl100k_base")
@@ -302,44 +311,60 @@ def display_home():
             st.markdown('</div>', unsafe_allow_html=True)
         
         with col3:
-            st.markdown('<div style="padding-top: 30px;">', unsafe_allow_html=True)
-            if st.button("Read PDF", key=f"read_{idx}"):
-                st.query_params["read"] = paper["slug"]
-                st.rerun()
-            st.markdown('</div>', unsafe_allow_html=True)
+            read_pdf_icon = get_base64_image("static/images/ReadPDF.png")
 
-            st.markdown('<div style="padding-top: 30px;">', unsafe_allow_html=True)
-            if st.button("🤖Ask AI ", key=f"ask_ai_{idx}"):
-                st.query_params["chat"] = paper["slug"]
-                st.rerun()
-            st.markdown('</div>', unsafe_allow_html=True)
+            st.markdown(f"""
+                <div style="padding-top: 30px;">
+                    <a href="?read={paper['slug']}" style="text-decoration: none;">
+                        <button style="display: flex; align-items: center; padding: 8px 12px; border: 5px; background-color: #ff9700; color: black; border-radius: 5px; font-weight: bold;">
+                            <img src="data:image/png;base64,{read_pdf_icon}" width="20" height="20" style="margin-right: 8px;" />
+                            Read PDF
+                        </button>
+                    </a>
+                </div>
+            """, unsafe_allow_html=True)
+            
+           
+            img_base64 = get_base64_image("static/images/AskAI.png")
+
+            # Embed in HTML
+            st.markdown(f"""
+                <div style="padding-top: 30px;">
+                    <a href="?chat={paper['slug']}" style="text-decoration: none;">
+                        <button style="display: flex; align-items: center; padding: 8px 12px; border: 5px; background-color: #ff9700; color: black; border-radius: 5px;  font-weight: bold;">
+                            <img src="data:image/png;base64,{img_base64}" width="20" height="20" style="margin-right: 8px;" />
+                            Ask AI
+                        </button>
+                    </a>
+                </div>
+            """, unsafe_allow_html=True)
+
         
         with col4:
-            st.markdown('<div style="padding-top: 30px;">', unsafe_allow_html=True)
-            with open(f"static/files/{paper['filename']}", "rb") as pdf_file:
-                st.download_button(
-                    label = 'Download PDF',
-                    data = pdf_file,
-                    file_name = paper['filename'],
-                    key = f"dl_{idx}"
-                )
-            st.markdown('</div>', unsafe_allow_html=True)
+            download_icon = get_base64_image("static/images/DownloadPDF.png")
+
+            st.markdown(f"""
+                <div style="padding-top: 30px;">
+                    <a href="static/files/{paper['filename']}" download="{paper['filename']}" style="text-decoration: none;">
+                        <button style="display: flex; align-items: center; padding: 8px 12px; border: 5px; background-color: #ff9700; color: black; border-radius: 5px; font-weight: bold;">
+                            <img src="data:image/png;base64,{download_icon}" width="20" height="20" style="margin-right: 8px;" />
+                            Download PDF
+                        </button>
+                    </a>
+                </div>
+            """, unsafe_allow_html=True)
 
             if paper.get('model_link'):
+                model_icon = get_base64_image("static/images/ViewModel.png")
+
                 st.markdown(f"""
-                    <a href="{paper['model_link']}" target="_blank">
-                        <button style="
-                            background-color:#de7006;
-                            color:black;
-                            border:none;
-                            padding:6px 12px;
-                            border-radius:4px;
-                            margin-top:30px;
-                            cursor:pointer;
-                        ">View Model</button>
+                    <a href="{paper['model_link']}" target="_blank" style="text-decoration: none;">
+                        <button style="display: flex; align-items: center; padding: 8px 12px; border: 5px; background-color: #ff9700; color: black; border-radius: 5px; font-weight: bold; margin-top: 30px;">
+                            <img src="data:image/png;base64,{model_icon}" width="20" height="20" style="margin-right: 8px;" />
+                            View Model
+                        </button>
                     </a>
                 """, unsafe_allow_html=True)
-
             
  
         with col5:
@@ -361,7 +386,7 @@ def display_home():
                             cursor: pointer;
                             border-radius: 4px;
                         ">
-                            <i class="fas fa-globe" style="color: black;"></i>
+                            <i class="fas fa-globe" style="color: black;"> Application</i>
                         </button>
                     </a>
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -548,17 +573,24 @@ st.markdown(
     """
     <style>
     div.stButton > button {
-        background-color:#de7006;  /* Button background color */
+        background-color:#ff9700;  /* Button background color */
         color: #000000;  /* Button text color */
         cursor: pointer;
+         display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border: 5px;
+        border-radius: 5px; 
+        font-weight: bold; 
+        margin-top: 30px;
     }
     div.stButton > button:hover {
-        background-color: #de7006;  /* No change on hover */
+        background-color: #ff9700;  /* No change on hover */
         border-color: none;      /* No change on hover */
         color: #000000;             /* No change on hover */
     }
     div.stButton > button:active {
-        background-color: #de7006;  /* No change on click */
+        background-color: #ff9700;  /* No change on click */
         border-color: none;      /* No change on click */
         color: #000000;             /* No change on click */
     }
@@ -571,17 +603,24 @@ st.markdown(
     """
     <style>
     div.stDownloadButton > button {
-        background-color:#de7006;  /* Button background color */
+        background-color:#ff9700;  /* Button background color */
         color: #000000;  /* Button text color */
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border: 5px;
+        border-radius: 5px; 
+        font-weight: bold; 
+        margin-top: 30px;
     }
     div.stDownloadButton > button:hover {
-        background-color: #de7006;  /* No change on hover */
+        background-color: #ff9700;  /* No change on hover */
         border-color: none;      /* No change on hover */
         color: #000000;             /* No change on hover */
     }
     div.stDownloadButton > button:active {
-        background-color: #de7006;  /* No change on click */
+        background-color: #ff9700;  /* No change on click */
         border-color: none;      /* No change on click */
         color: #000000;             /* No change on click */
     }
