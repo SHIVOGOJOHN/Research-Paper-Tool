@@ -576,16 +576,19 @@ st.markdown(
         background-color:#ff9700;  /* Button background color */
         color: #000000;  /* Button text color */
         cursor: pointer;
+        font-weight: bold;
     }
     div.stButton > button:hover {
         background-color: #ff9700;  /* No change on hover */
         border-color: none;      /* No change on hover */
-        color: #000000;             /* No change on hover */
+        color: #000000; 
+        font-weight: bold; /* No change on hover */
     }
     div.stButton > button:active {
         background-color: #ff9700;  /* No change on click */
         border-color: none;      /* No change on click */
         color: #000000;             /* No change on click */
+        font-weight: bold;
     }
     </style>
     """,
@@ -599,16 +602,19 @@ st.markdown(
         background-color:#ff9700;  /* Button background color */
         color: #000000;  /* Button text color */
         cursor: pointer;
+        font-weight: bold;
     }
     div.stDownloadButton > button:hover {
         background-color: #ff9700;  /* No change on hover */
         border-color: none;      /* No change on hover */
         color: #000000;             /* No change on hover */
+        font-weight: bold;
     }
     div.stDownloadButton > button:active {
         background-color: #ff9700;  /* No change on click */
         border-color: none;      /* No change on click */
         color: #000000;             /* No change on click */
+        font-weight: bold;
     }
     </style>
     """,
