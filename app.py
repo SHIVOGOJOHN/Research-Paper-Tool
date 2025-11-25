@@ -26,7 +26,7 @@ def get_base64_image(image_path):
 
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-llm = ChatGroq(groq_api_key=GROQ_API_KEY, model_name="qwen-qwq-32b")
+llm = ChatGroq(groq_api_key=GROQ_API_KEY, model_name="llama-3.1-8b-instant")
 MAX_TOKENS = 5000
 
 # --- Constants and Config ---
@@ -740,3 +740,4 @@ def main():
 
 if __name__ == "__main__":
     main()   
+
